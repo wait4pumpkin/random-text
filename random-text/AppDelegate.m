@@ -31,7 +31,11 @@
 - (IBAction)generate:(NSButton *)sender {
     [sender setEnabled:NO];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://loripsum.net/api/plaintext/medium"]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:@"http://watchout4snakes.com/wo4snakes/Random/RandomParagraph"]];
+    [request setHTTPMethod:@"POST"];
+    NSString *form = @"Subject1=&Subject2=";
+    [request setHTTPBody:[form dataUsingEncoding:NSUTF8StringEncoding]];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
